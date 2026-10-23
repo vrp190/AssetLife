@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# WorkBuddy 内部状态（不纳入版本控制）
+.workbuddy/
+
+# Xcode 构建产物
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# 签名与本地配置（含隐私，按需自行管理）
+*.mobileprovision
+*.p12
