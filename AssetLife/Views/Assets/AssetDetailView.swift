@@ -19,11 +19,13 @@ struct AssetDetailView: View {
     private var days: Int { asset.holdingDays() }
     private var dailyCost: Decimal? { asset.effectiveDailyCost() }
 
-    /// 由购买日期至今推导的月度日均成本序列（不伪造每日真实历史）。
-    private var trendPoints: [(label: String, value: Decimal)] {
-        let monthsSincePurchase = max(1, Calendar.current.dateComponents([.month], from: asset.purchaseDate, to: Date()).month ?? 0)
-        let points = trends.monthlyPoints([asset], months: min(12, monthsSincePurchase + 1))
-        return points.map { (DateFormatterBox.monthLabel.string(from: $0.monthStart), $0.dailyCostAsOf) }
+    /// 由购买日期推导的日均成本序列：短期持有按天、长期持按月，保证图上始终有可画的曲线。
+    private var trendPoints: [CostTrendPoint] {
+        AssetCostTrend.series(for: asset)
+    }
+
+    private var trendGranularity: CostTrendGranularity {
+        AssetCostTrend.granularity(holdingDays: days)
     }
 
     var body: some View {
@@ -32,7 +34,7 @@ struct AssetDetailView: View {
                 header
                 heroCard
                 statsRow
-                if trendPoints.count >= 2 {
+                if !trendPoints.isEmpty {
                     trendCard
                 }
                 infoCard
@@ -213,34 +215,58 @@ struct AssetDetailView: View {
                 Text("日均成本趋势")
                     .font(.headline)
                     .foregroundStyle(Brand.primaryText)
-                Text("按各月最后一天可推导数据绘制，非每日真实记录。")
+                Text(trendCaption)
                     .font(.caption2)
                     .foregroundStyle(Brand.secondaryText)
-                Chart(trendPoints, id: \.label) { point in
+                Chart(trendPoints) { point in
                     LineMark(
-                        x: .value("月份", point.label),
-                        y: .value("日均成本", NSDecimalNumber(decimal: point.value).doubleValue)
+                        x: .value("日期", point.date),
+                        y: .value("日均成本", NSDecimalNumber(decimal: point.dailyCost).doubleValue)
                     )
                     .foregroundStyle(Brand.accentDeep)
                     .interpolationMethod(.catmullRom)
                     .lineStyle(StrokeStyle(lineWidth: 2.5))
-                    AreaMark(
-                        x: .value("月份", point.label),
-                        y: .value("日均成本", NSDecimalNumber(decimal: point.value).doubleValue)
-                    )
-                    .foregroundStyle(
-                        .linearGradient(
-                            colors: [Brand.accent.opacity(0.35), Brand.accent.opacity(0.02)],
-                            startPoint: .top,
-                            endPoint: .bottom
+                    if trendPoints.count > 1 {
+                        AreaMark(
+                            x: .value("日期", point.date),
+                            y: .value("日均成本", NSDecimalNumber(decimal: point.dailyCost).doubleValue)
                         )
-                    )
+                        .foregroundStyle(
+                            .linearGradient(
+                                colors: [Brand.accent.opacity(0.35), Brand.accent.opacity(0.02)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                    } else {
+                        // 只有当天一个点时，线/面积都画不出来，改为显式描点
+                        PointMark(
+                            x: .value("日期", point.date),
+                            y: .value("日均成本", NSDecimalNumber(decimal: point.dailyCost).doubleValue)
+                        )
+                        .foregroundStyle(Brand.accentDeep)
+                        .symbolSize(140)
+                    }
+                }
+                .chartXAxis {
+                    AxisMarks(format: trendGranularity == .daily
+                              ? .dateTime.month(.abbreviated).day()
+                              : .dateTime.year().month())
                 }
                 .chartYAxis {
                     AxisMarks(position: .leading)
                 }
                 .frame(height: 160)
             }
+        }
+    }
+
+    private var trendCaption: String {
+        switch trendGranularity {
+        case .daily:
+            return "持有不足两个月，按天推导日均成本；非每日真实记录。"
+        case .monthly:
+            return "按各月最后一天可推导数据绘制，非每日真实记录。"
         }
     }
 
