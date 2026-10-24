@@ -11,6 +11,9 @@ build/
 xcuserdata/
 *.xcworkspace/xcuserdata/
 
+# 本地手工导出的可执行产物（Release .app / 分发 zip，体积大且可随时重建）
+dist/
+
 # 签名与本地配置（含隐私，按需自行管理）
 *.mobileprovision
 *.p12
