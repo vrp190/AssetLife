@@ -175,3 +175,12 @@ macOS 版在同级目录的独立仓库 `../AssetLifeMac/`。
 
 冒烟截图见 `docs/screenshots/`（空状态 / 演示数据 / 重启后 / 心愿 / 趋势 /
 设置 / iPhone SE 小屏）。
+
+## 许可证
+
+[AGPL-3.0](LICENSE) + 商业授权 双许可：
+
+- **非商业用途**（个人使用、学习、研究、非商业分发）：免费，遵循 AGPL-3.0 即可。
+- **商业用途**：二选一 —— ① 将衍生作品以 AGPL-3.0 开源；② 通过本仓库 Issue 取得作者的书面商业授权。
+
+详见 [LICENSING.md](LICENSING.md)。版权人：AssetLife contributors。
