@@ -1,11 +1,29 @@
 # 格物 AssetLife
 
+[![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-blue)](LICENSE)
+![Platform](https://img.shields.io/badge/platform-iOS%2017%2B-lightgrey)
+![Tests](https://img.shields.io/badge/tests-73%20passing-brightgreen)
+![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
+
 原生 iOS 资产管理 App（SwiftUI + SwiftData + Swift Charts，MVVM）。
 按 `docs/IOS_ASSET_APP_SPEC.md` 规格实现：记录每一件物品的购入成本，自动计算
 **日均成本**（购入价 ÷ 持有天数），帮助判断「这东西到底值不值」。
 
 > 品牌说明：规格文档中的示例名称在本实现中重新品牌化为「格物」，
 > 图标与视觉元素均为程序化原创设计（非截图复刻）。
+
+## 截图
+
+| 资产总览（空状态） | 资产总览（演示数据） | 心愿清单 |
+| --- | --- | --- |
+| ![资产总览（空状态）](docs/screenshots/01_assets_empty.png) | ![资产总览（演示数据）](docs/screenshots/02_assets_seeded.png) | ![心愿清单](docs/screenshots/04_wishlist.png) |
+
+| 趋势统计 | 设置 | iPhone SE 小屏适配 |
+| --- | --- | --- |
+| ![趋势统计](docs/screenshots/05_trends.png) | ![设置](docs/screenshots/06_settings.png) | ![iPhone SE 小屏适配](docs/screenshots/07_iphone_se_small_screen.png) |
+
+> 截图取自 iPhone 17 模拟器（iOS 27.0），数据为带 `isDemoData` 标记的演示数据；
+> 全部原图见 [`docs/screenshots/`](docs/screenshots/)。
 
 ## 运行环境
 
@@ -184,3 +202,5 @@ macOS 版在同级目录的独立仓库 `../AssetLifeMac/`。
 - **商业用途**：二选一 —— ① 将衍生作品以 AGPL-3.0 开源；② 通过本仓库 Issue 取得作者的书面商业授权。
 
 详见 [LICENSING.md](LICENSING.md)。版权人：AssetLife contributors。
+
+贡献代码前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)（构建/测试命令、共享代码同步规则、贡献授权）。

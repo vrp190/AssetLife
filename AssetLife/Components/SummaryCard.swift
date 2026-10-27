@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import SwiftUI
 
 /// 总览统计卡：在册数量、购入总成本、日均成本之和、状态进度条。

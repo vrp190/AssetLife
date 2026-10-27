@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import SwiftUI
 
 /// 新增 / 编辑资产（心愿）表单页。

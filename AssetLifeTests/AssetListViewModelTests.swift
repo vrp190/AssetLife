@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import XCTest
 
 /// 总览统计、筛选、搜索、排序、趋势序列测试。

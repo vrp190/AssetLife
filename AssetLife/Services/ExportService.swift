@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import Foundation
 
 /// 导出/导入的数据结构。金额与日期均以字符串编码，保证往返不丢失精度。

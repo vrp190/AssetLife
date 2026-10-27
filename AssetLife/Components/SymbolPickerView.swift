@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import SwiftUI
 
 /// 图标选择器：精选 SF Symbols 网格。不依赖外部图标库。

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import Foundation
 
 /// 预置类别与默认图标。用户也可以输入自定义分类（以字符串存储）。

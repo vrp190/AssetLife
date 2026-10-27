@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import Foundation
 
 /// 单件资产日均成本趋势的一个采样点。

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import SwiftUI
 
 /// 状态筛选条：全部 / 使用中 / 已退役 / 已卖出。

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import Foundation
 
 /// 统一的金额与日期格式化。界面不直接使用裸数字。

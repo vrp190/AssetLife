@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 AssetLife contributors
+
 import SwiftUI
 
 /// 双列网格中的资产卡片：图标、状态、名称、购入价、持有天数、日均成本。
